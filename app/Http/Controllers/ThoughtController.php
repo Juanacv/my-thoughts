@@ -63,7 +63,7 @@ class ThoughtController extends Controller
     }
 
     protected function authorizeAction(User $user, Thought $thought)
-{
+    {
         if ($thought->user_id !== $user->id) {
             abort(403, 'No autorizado.');
         }

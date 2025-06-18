@@ -33,10 +33,18 @@ defineProps({
 const emit = defineEmits(['edit', 'delete'])
 
 function edit() {
+    scrollToForm()
     emit('edit')
 }
 
 function del() {
     emit('delete')
+}
+
+function scrollToForm() {
+  const form = document.getElementById('thoughtForm');
+  if (form) {
+    form.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 </script>

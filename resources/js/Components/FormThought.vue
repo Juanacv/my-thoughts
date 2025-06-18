@@ -31,7 +31,7 @@ function submitThought() {
 </script>
 
 <template>
-    <div class="overflow-hidden bg-blue-100 shadow-sm sm:rounded-lg">
+    <div class="overflow-hidden bg-blue-100 shadow-sm sm:rounded-lg" id="thoughtForm" name="thoughtForm">
         <div class="p-6 text-gray-900">
             <p class="text-xl font-semibold text-gray-600 mb-2">¿En qué estás pensando?</p>
 
