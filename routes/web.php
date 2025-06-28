@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/thoughts', [ThoughtController::class, 'index'])->name('thoughts.index');
     Route::post('/thoughts', [ThoughtController::class, 'store'])->name('thoughts.store');
     Route::put('/thoughts/{thought}', [ThoughtController::class, 'update'])->name('thoughts.update');
-    Route::delete('/thoughts/{thought}', [ThoughtController::class, 'destroy'])->name('thoughts.destroy');
+    Route::delete('/thoughts/{thought}', [ThoughtController::class, 'delete'])->name('thoughts.delete');
 });
 
 require __DIR__.'/auth.php';

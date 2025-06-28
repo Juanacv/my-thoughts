@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Thought;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ThoughtController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display a listing of the resource.
      */
@@ -42,7 +45,7 @@ class ThoughtController extends Controller
 
     public function update(Request $request, Thought $thought)
     {
-        $this->authorizeAction($request->user(), $thought);
+        $this->authorize('update', $thought);
     
         $request->validate([
             'content' => 'required|string|max:255',
@@ -53,19 +56,13 @@ class ThoughtController extends Controller
         return response()->json($thought);
     }
     
-    public function destroy(Request $request, Thought $thought)
+    public function delete(Request $request, Thought $thought)
     {
-        $this->authorizeAction($request->user(), $thought);
+        $this->authorize('delete', $thought);
     
         $thought->delete();
     
         return response()->json(null, 204);
     }
 
-    protected function authorizeAction(User $user, Thought $thought)
-    {
-        if ($thought->user_id !== $user->id) {
-            abort(403, 'No autorizado.');
-        }
-    }
 }
